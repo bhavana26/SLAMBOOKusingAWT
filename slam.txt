@@ -1,0 +1,188 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+class FileAWT1 extends Frame implements ActionListener
+{
+	Frame f,f1,f2;
+	Button b1,b2,b3,b4,l;
+	TextArea ta1;
+	TextField tf1,tf2,ta21,ta22,ta23,ta24,ta25,ta26,ta27,ta28,ta29;
+	Label l1,l2,l21,l22,l23,l24,l25,l26,l27,l28,l29;
+	
+	FileAWT1()
+	{
+		f=new Frame("My Slam Book");
+		f.setSize(1000,1000);
+		GridLayout gd = new GridLayout(8,8);
+		f.setLayout(gd);
+		f.setBackground(new java.awt.Color(255,153,51));
+		f1=new Frame("Reading");
+		f1.setSize(450,800);
+		f1.setLayout(null);
+		f1.setBackground(new java.awt.Color(255,51,153));
+		f2=new Frame("Writing");
+		f2.setSize(1000,1000);
+		f2.setLayout(null);
+		f2.setBackground(new java.awt.Color(255,48,150));
+		l=new Button("Welcome to my slam book");
+		b1=new Button("Read a slam");
+		b2=new Button("Write a slam");
+		//first frame
+		l1 = new Label("Enter File name: ");
+		tf1=new TextField();
+		b3=new Button("Open");
+		ta1=new TextArea();
+		//second frame
+		l2 = new Label("Enter the File name");
+		tf2=new TextField();
+		l21= new Label("NAME : ");
+		ta21=new TextField();
+		l22= new Label("DOB : ");
+		ta22=new TextField();
+		l23= new Label("PHONE NUMBER : ");
+		ta23=new TextField();
+		l24= new Label("EMAIL ID : ");
+		ta24=new TextField();
+		l25= new Label("FAVOURITE COLOR : ");
+		ta25=new TextField();
+		l26= new Label("HOBBIES : ");
+		ta26=new TextField();
+		l27= new Label("AIM : ");
+		ta27=new TextField();
+		l28= new Label("ONE WORD ABOUT ME : ");
+		ta28=new TextField();
+		l29= new Label("DATE : ");
+		ta29=new TextField();
+		b4=new Button("Save");
+		//setting boundaries
+		b3.setBounds(40,390,70,30);
+		b4.setBounds(180,540,70,30);
+		tf1.setBounds(40,65,70,30);
+		tf2.setBounds(40,65,70,30);
+		l1.setBounds(40,40,120,20);
+		l2.setBounds(40,40,120,20);
+		l21.setBounds(40,140,120,20);
+		l22.setBounds(40,180,120,20);
+		l23.setBounds(40,220,120,20);
+		l24.setBounds(40,260,120,20);
+		l25.setBounds(40,300,120,20);
+		l26.setBounds(40,340,120,20);
+		l27.setBounds(40,380,120,20);
+		l28.setBounds(40,420,150,20);
+		l29.setBounds(40,460,120,20);
+		ta1.setBounds(40,130,250,200);
+		ta21.setBounds(240,140,180,20);
+		ta22.setBounds(240,180,180,20);
+		ta23.setBounds(240,220,180,20);
+		ta24.setBounds(240,260,180,20);
+		ta25.setBounds(240,300,180,20);
+		ta26.setBounds(240,340,180,20);
+		ta27.setBounds(240,380,180,20);
+		ta28.setBounds(240,420,180,20);
+		ta29.setBounds(240,460,180,20);
+		//adding to f
+		f.add(l);
+		f.add(b1);
+		f.add(b2);
+		//adding to f1
+		f1.add(l1);
+		f1.add(b3);
+		f1.add(tf1);
+		f1.add(ta1);
+		//adding to f2
+		f2.add(l2);
+		f2.add(b4);
+		f2.add(tf2);
+		f2.add(l21);
+		f2.add(ta21);
+		f2.add(l22);
+		f2.add(ta22);
+		f2.add(l23);
+		f2.add(ta23);
+		f2.add(l24);
+		f2.add(ta24);
+		f2.add(l25);
+		f2.add(ta25);
+		f2.add(l26);
+		f2.add(ta26);
+		f2.add(l27);
+		f2.add(ta27);
+		f2.add(l28);
+		f2.add(ta28);
+		f2.add(l29);
+		f2.add(ta29);
+		//actionlisteners
+		b1.addActionListener(this);
+		b2.addActionListener(this);
+		b3.addActionListener(this);
+		b4.addActionListener(this);
+		f.setVisible(true);
+	}
+	public void actionPerformed(ActionEvent ae)
+	{
+		try{
+		if(ae.getActionCommand().equals("Read a slam"))
+		{
+			f1.setVisible(true);
+		}
+		else if(ae.getActionCommand().equals("Write a slam"))
+		{
+			f2.setVisible(true);
+		}
+		else if(ae.getActionCommand().equals("Save"))
+		{
+			try
+			{
+			f2.setVisible(true);
+			BufferedWriter outfile = new BufferedWriter(new FileWriter(tf2.getText()));
+			outfile.write("Name:"+ta21.getText());
+			outfile.write("\nDOB:"+ta22.getText());
+			outfile.write("\nPhone Number:"+ta23.getText());
+			outfile.write("\nEmail ID:"+ta24.getText());
+			outfile.write("\nFavorite Color:"+ta25.getText());
+			outfile.write("\nHobbies:"+ta26.getText());
+			outfile.write("\nAim:"+ta27.getText());
+			outfile.write("\nOne Word About Me:"+ta28.getText());
+			outfile.write("\nDate:"+ta29.getText());
+			outfile.close();
+			}
+			catch(Exception e)
+			{
+			}
+		}
+		else
+		{
+			BufferedReader buff = null;
+  			try {
+       				buff = new BufferedReader(new FileReader(tf1.getText()));
+       				String str;
+
+	{
+       					ta1.append("\n"+str);
+   				}
+ 			} 
+			catch (IOException e) {
+  			}
+	
+		}
+		}
+		catch(Exception e){}
+	}
+
+	public static void main(String args[]) throws Exception 
+	{
+		new FileAWT1();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
