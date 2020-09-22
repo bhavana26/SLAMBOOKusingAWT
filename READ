@@ -1,0 +1,10 @@
+As we know JAVA Abstract Window Tool Kit is an API to develop GUI or
+Window Applications in JAVA ,In this project we need to create an online Slam
+Book Application in which there will be three windows in the first one will be
+the user’s choice to either write or read a slam and if the user clicks on the
+button To Write A Slam then the window should pop up with the text area in
+which file the user wanted to write a slam and then all the details are filled by
+the user and then he clicks the SAVE Button and the details are stored in a file
+which will be appear on the default directory and then if the user clicks the Read
+A Slam button then the file from which he wants to read will be entered then all
+the details are then displayed in the Text Area.
